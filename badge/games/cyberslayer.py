@@ -4,6 +4,7 @@ import asyncio
 import json
 import os
 import gc
+import random
 from machine import Pin
 from neopixel import NeoPixel
 from micropython import const
@@ -53,6 +54,32 @@ LEVELS = (
     {"name": "SCADA", "enemy": "Zero-Day", "hp": 35, "atk": 7, "special": None, "weak": "meta"},
     {"name": "C-Suite", "enemy": "Social Eng", "hp": 28, "atk": 8, "special": "encrypt", "weak": "ping"},
     {"name": "Core Router", "enemy": "APT", "hp": 55, "atk": 8, "special": "adapt", "weak": "meta"},
+)
+
+VICTORY_QUOTES = (
+    "The network bows to you.",
+    "All your base are belong to us.",
+    "root@victory:~# cat flag.txt",
+    "Hack the planet!",
+    "Access granted. Welcome home.",
+    "You are the firewall now.",
+    "Zero threats remaining. GG.",
+    "They never stood a chance.",
+    "Breached, cleared, secured.",
+    "sudo rm -rf /threats/*",
+)
+
+DEFEAT_QUOTES = (
+    "Segfault in your defenses.",
+    "Connection terminated by host.",
+    "Try harder.",
+    "The firewall won this round.",
+    "You got 0wn3d.",
+    "Kernel panic - not syncing.",
+    "rm -rf /your/hopes",
+    "418 I'm a teapot. You're toast.",
+    "Have you tried turning it off?",
+    "Skill issue detected.",
 )
 
 RANKS = (
@@ -522,6 +549,11 @@ class SlayerEnd(Screen):
         Label(wri, 90, 2, 316,
               justify=Label.CENTRE, fgcolor=D_GREEN
               ).value(f"Cleared: {level}/{NUM_LEVELS} | Kills: {kills}")
+
+        quote = random.choice(VICTORY_QUOTES if victory else DEFEAT_QUOTES)
+        Label(wri, 110, 2, 316,
+              justify=Label.CENTRE, fgcolor=WHITE
+              ).value(quote)
 
         # LED animations
         self.led_power = LED_ACTIVATE_PIN
