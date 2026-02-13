@@ -80,7 +80,7 @@ Flash the [Disobey 2025 Badge firmware](https://github.com/disobeyfi/disobey-bad
 
 ### Install via mpremote
 
-Connect the badge via USB, then from the badge firmware repo:
+Connect the badge via USB, then from this repo:
 
 ```bash
 # Create directories
@@ -88,11 +88,11 @@ mpremote mkdir :badge
 mpremote mkdir :badge/games
 
 # Copy files
-mpremote cp firmware/boot.py :boot.py
-mpremote cp firmware/main.py :main.py
-mpremote cp firmware/badge/__init__.py :badge/__init__.py
-mpremote cp firmware/badge/games/__init__.py :badge/games/__init__.py
-mpremote cp firmware/badge/games/cyberslayer.py :badge/games/cyberslayer.py
+mpremote cp boot.py :boot.py
+mpremote cp main.py :main.py
+mpremote cp badge/__init__.py :badge/__init__.py
+mpremote cp badge/games/__init__.py :badge/games/__init__.py
+mpremote cp badge/games/cyberslayer.py :badge/games/cyberslayer.py
 
 # Reset badge
 mpremote reset
@@ -112,14 +112,13 @@ If using the badge firmware repo with `make repl_with_firmware_dir`:
 ## File Structure
 
 ```
-firmware/
-  boot.py                       # Standalone launcher
-  main.py                       # Dev mode launcher
-  badge/
+boot.py                         # Standalone launcher
+main.py                         # Dev mode launcher
+badge/
+  __init__.py
+  games/
     __init__.py
-    games/
-      __init__.py
-      cyberslayer.py             # The game
+    cyberslayer.py               # The game
 ```
 
 ## Acknowledgments
