@@ -1,6 +1,6 @@
 # CyberSlayer
 
-A DOOM-inspired cybersecurity combat game for the [Disobey 2025 Badge](https://github.com/disobeyfi/disobey-badge-2025-game-firmware).
+A DOOM-inspired cybersecurity combat game for the [Disobey 2026 Badge](https://github.com/disobeyfi/disobey-badge-2025-game-firmware).
 
 Rip and tear through a corporate network — from Guest WiFi to Core Router. Built in MicroPython on an ESP32-S3 with 512KB RAM.
 
