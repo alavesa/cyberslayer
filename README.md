@@ -6,6 +6,8 @@ Rip and tear through a corporate network — from Guest WiFi to Core Router. Bui
 
 > Work in progress. It runs on my badge and that's what counts.
 
+![20260213_032423](https://github.com/user-attachments/assets/0ebe9071-0708-4f24-a75b-b5a79e69c819)
+
 ## Gameplay
 
 You breach a corporate network across 10 zones. Each zone has a different cyber threat with unique abilities. Pick the right weapon, exploit weaknesses, manage your ammo, and survive.
