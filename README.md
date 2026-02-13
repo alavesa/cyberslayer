@@ -4,7 +4,7 @@ A DOOM-inspired cybersecurity combat game for the [Disobey 2026 Badge](https://g
 
 Rip and tear through a corporate network — from Guest WiFi to Core Router. Built in MicroPython on an ESP32-S3 with 512KB RAM.
 
-> Work in progress. It runs on my badge and that's what counts.
+> "Work in progress. It runs on my badge and that's what counts." - Piia
 
 ![20260213_032423](https://github.com/user-attachments/assets/0ebe9071-0708-4f24-a75b-b5a79e69c819)
 
