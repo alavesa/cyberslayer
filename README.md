@@ -124,6 +124,6 @@ firmware/
 
 ## Acknowledgments
 
-- Paula Alavesa
+- Paula Alavesa and Eija Alavesaa
 - [Disobey](https://disobey.fi/) badge team
 - [micropython-micro-gui](https://github.com/peterhinch/micropython-micro-gui) by Peter Hinch
