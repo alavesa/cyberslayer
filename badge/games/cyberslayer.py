@@ -4,7 +4,6 @@ import asyncio
 import json
 import os
 import gc
-import random
 from machine import Pin
 from neopixel import NeoPixel
 from micropython import const
@@ -56,32 +55,6 @@ LEVELS = (
     {"name": "Core Router", "enemy": "APT", "hp": 55, "atk": 8, "special": "adapt", "weak": "meta"},
 )
 
-VICTORY_QUOTES = (
-    "The network bows to you.",
-    "All your base are belong to us.",
-    "root@victory:~# cat flag.txt",
-    "Hack the planet!",
-    "Access granted. Welcome home.",
-    "You are the firewall now.",
-    "Zero threats remaining. GG.",
-    "They never stood a chance.",
-    "Breached, cleared, secured.",
-    "sudo rm -rf /threats/*",
-)
-
-DEFEAT_QUOTES = (
-    "Segfault in your defenses.",
-    "Connection terminated by host.",
-    "Try harder.",
-    "The firewall won this round.",
-    "You got 0wn3d.",
-    "Kernel panic - not syncing.",
-    "rm -rf /your/hopes",
-    "418 I'm a teapot. You're toast.",
-    "Have you tried turning it off?",
-    "Skill issue detected.",
-)
-
 RANKS = (
     (0, "Script Kiddie"),
     (2, "Packet Pusher"),
@@ -92,12 +65,41 @@ RANKS = (
 )
 
 
+WISDOMS = (
+    "The firewall whispers: trust no packet.",
+    "Every zero-day was once unknown.",
+    "Root is a privilege, not a right.",
+    "The best backdoor is an open front door.",
+    "Patch Tuesday. Exploit Wednesday.",
+    "There is no cloud. Just someone else's server.",
+    "The weakest link is always human.",
+    "Security through obscurity is no security.",
+    "In packets we trust. In logs we verify.",
+    "The network remembers what you forget.",
+    "Encrypt everything. Trust nothing.",
+    "A vulnerability shared is a vulnerability squared.",
+    "The best exploit needs no code.",
+    "Yesterday's patch is tomorrow's attack surface.",
+    "Behind every breach: a default password.",
+    "The oracle sees all traffic, clear and cipher.",
+    "chmod 777: the path of least resistance.",
+    "There are no secure systems. Only untested ones.",
+    "Social engineering bypasses all firewalls.",
+    "The log file knows the truth.",
+)
+
+
 def get_rank(level):
     rank = RANKS[0][1]
     for threshold, name in RANKS:
         if level >= threshold:
             rank = name
     return rank
+
+
+def get_wisdom():
+    b = os.urandom(1)[0]
+    return WISDOMS[b % len(WISDOMS)]
 
 
 # ---------------------------------------------------------
@@ -550,10 +552,9 @@ class SlayerEnd(Screen):
               justify=Label.CENTRE, fgcolor=D_GREEN
               ).value(f"Cleared: {level}/{NUM_LEVELS} | Kills: {kills}")
 
-        quote = random.choice(VICTORY_QUOTES if victory else DEFEAT_QUOTES)
         Label(wri, 110, 2, 316,
               justify=Label.CENTRE, fgcolor=WHITE
-              ).value(quote)
+              ).value(get_wisdom())
 
         # LED animations
         self.led_power = LED_ACTIVATE_PIN
@@ -566,13 +567,13 @@ class SlayerEnd(Screen):
             self.reg_task(self._death_leds(level), False)
 
         Button(
-            wri, 130, 30, width=120, height=26,
+            wri, 140, 30, width=120, height=26,
             text="Menu",
             fgcolor=D_GREEN, textcolor=D_GREEN,
             callback=lambda *_: self.go_menu(),
         )
         Button(
-            wri, 130, 170, width=120, height=26,
+            wri, 140, 170, width=120, height=26,
             text="Again",
             fgcolor=D_GREEN, textcolor=D_GREEN,
             callback=lambda *_: Screen.change(
