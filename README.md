@@ -123,6 +123,6 @@ badge/
 
 ## Acknowledgments
 
-- Paula Alavesa and Eija Alavesaa
+- Paula Alavesa and Eija Alavesa
 - [Disobey](https://disobey.fi/) badge team
 - [micropython-micro-gui](https://github.com/peterhinch/micropython-micro-gui) by Peter Hinch
